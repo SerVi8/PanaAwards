@@ -57,7 +57,7 @@ img {
   justify-content: center;
   align-content: center;
   gap: 2em;
-  padding: 0 12em;
+  padding: 0 4%;
 }
 
 
@@ -72,6 +72,18 @@ img {
   background: rgba(255, 255, 255, .15);
   /* backdrop-filter: blur(3px); */
   border-radius: 8px;
+  transition: all 3s linear;
+
+}
+
+.nominado.winer.view {
+  width: fit-content;
+  max-width: 50vw;
+}
+
+.nominado.winer.view>img {
+  height: fit-content;
+  max-height: 80vh;
 }
 
 .nominado>img {

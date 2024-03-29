@@ -40,7 +40,7 @@ let categorias = [
         preview: ''
       },
     ],
-    Ganador: 0
+    Ganador: 2
   },
 
   {
@@ -219,6 +219,9 @@ class DiapositivaNominados {
     }
     nominados.forEach((i) => {
       let nominado = new TarjetaNominado(i.nombre, i.imagen, i.preview);
+      if (i.id == ganador) {
+        nominado.HTMLElement.classList.add("winer");
+      }
       diapositiva.append(nominado.HTMLElement);
     });
     this.HTMLElement = diapositiva;
@@ -284,7 +287,14 @@ addEventListener("keyup", (e) => {
   } else if (e.key == "d") {
     cate.enfocarNominados();
   } else if (e.key == "Enter") {
-    mostrarGanador()
+    document.querySelectorAll('.nominado').forEach(e => {
+      if (!(e.classList.contains('winer'))) {
+        e.style.display = 'none';
+      }
+      else {
+        e.classList.add('view')
+      }
+    })
   } else if (e.key == "ArrowRight") {
     cate.enfocarCategoria();
     document.body.removeChild(cate.HTMLElement);
