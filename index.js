@@ -13,7 +13,7 @@ let categorias = [
         id: 2,
         nombre: "Amnesia",
         imagen: "./assets/Juegos/Amnesia.jpg",
-        preview: ''
+        preview: '<img src="./assets/Juegos/Amnesia.jpg">'
       },
       {
         id: 3,
@@ -45,46 +45,46 @@ let categorias = [
 
   {
     NombreCategoria: "Mejor Serie ",
-    Portada: "./assets/PortadasCat/",
+    Portada: "./assets/PortadasCat/CatMejorSerie.jpeg",
     Nominados: [
       {
         id: 1,
         nombre: "South park",
-        imagen: "./assets/portada.jpg",
+        imagen: "./assets/Series/South Park.JPG",
         preview: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ov_b94XAYPU?si=NUq9KynU3XPbTvqo&amp;start=157" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
       },
       {
         id: 2,
         nombre: "Las dos series xd",
-        imagen: "./assets/portada.jpg",
+        imagen: "./assets/Series/Las dos series.jpg",
         preview: '<iframe width="560" height="315" src="https://www.youtube.com/embed/07P4LK-GJOM?si=HJaz81QpCTsIffma&amp;start=157" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
       },
       {
         id: 3,
         nombre: "Casa de papel",
-        imagen: "./assets/portada.jpg",
+        imagen: "./assets/Series/Casa de papel.jpg",
         preview: '<iframe width="560" height="315" src="https://www.youtube.com/embed/KQ7QVchnNb0?si=8G4L0QAVMHcrXZz2&amp;start=157" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
       },
       {
         id: 4,
         nombre: "Breaking Bad",
-        imagen: "./assets/portada.jpg",
+        imagen: "./assets/Series/Breaking Bad.jpg",
         preview: '<iframe width="560" height="315" src="https://www.youtube.com/embed/qhxgxbLYstU?si=A7huXAFBkKRL5u4v&amp;start=136" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
       },
       {
         id: 5,
         nombre: "Invencible",
-        imagen: "./assets/portada.jpg",
+        imagen: "./assets/Series/Invencible.jpg",
         preview: '<iframe width="560" height="315" src="https://www.youtube.com/embed/vlPqWWPiPTA?si=72BU5IeMwQYjODsg&amp;start=136" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
       },
       {
         id: 6,
         nombre: "Rick and Morty",
-        imagen: "./assets/portada.jpg",
+        imagen: "./assets/Series/Rick and Morty+.jpg",
         preview: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ov_b94XAYPU?si=7XO4sLBaELyAqA0u&amp;start=136" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
       }
     ],
-    Ganador: 0
+    Ganador: 2
   },
 
   {
@@ -171,7 +171,7 @@ let categorias = [
 ]
 
 
-let actual = 1;
+let actual = 0;
 
 class Categoria {
   constructor(nombre, imagenPortada, nominados, ganador) {
@@ -235,7 +235,6 @@ class TarjetaNominado {
     let img = document.createElement("img");
     img.src = imagen;
 
-    console.log(animacion)
     let preview = document.createElement("div")
     preview.classList.add('preview')
     preview.innerHTML = animacion
@@ -274,15 +273,31 @@ let cate = new Categoria(
 document.body.append(cate.HTMLElement);
 
 addEventListener("keyup", (e) => {
+  //Enter ArrowRight
+  document.querySelectorAll('.nominado').forEach(e => {
+    e.addEventListener('click', () => {
+      e.classList.toggle('visible')
+    })
+  })
   if (e.key == "a") {
-    cate.enfocarPortada();
+    cate.enfocarCategoria();
   } else if (e.key == "d") {
     cate.enfocarNominados();
+  } else if (e.key == "Enter") {
+    mostrarGanador()
+  } else if (e.key == "ArrowRight") {
+    cate.enfocarCategoria();
+    document.body.removeChild(cate.HTMLElement);
+    actual++;
+    if (actual >= categorias.length) {
+      actual = 0;
+    }
+    cate = new Categoria(
+      categorias[actual].NombreCategoria,
+      categorias[actual].Portada,
+      categorias[actual].Nominados,
+      categorias[actual].Ganador
+    );
   }
+  document.body.append(cate.HTMLElement);
 });
-document.querySelectorAll('.nominado').forEach(e => {
-  e.addEventListener('click', () => {
-    e.classList.toggle('visible')
-  })
-})
-

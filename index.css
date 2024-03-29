@@ -6,8 +6,6 @@
 body {
   overflow: hidden;
   margin: 0;
-  background-image: url(assets/BG_PanaAwardas.png);
-  background-size: cover;
   color: white;
 
 }
@@ -25,6 +23,8 @@ img {
 .portada {
   width: 100vw;
   height: 100vh;
+  background-image: url(assets/BG_PanaAwardas.png);
+  background-size: cover;
   /* height: 100%; */
 }
 
@@ -50,6 +50,7 @@ img {
   border-radius: 10px;
 }
 
+
 .contenedor-nominados {
   display: flex;
   flex-wrap: wrap;
@@ -59,20 +60,21 @@ img {
   padding: 0 12em;
 }
 
+
 .nominado {
   display: flex;
   flex-direction: column;
   width: 20vw;
-  border-radius: 8px;
-  box-shadow: rgba(99, 99, 99, 0.2);
   text-align: center;
   font-size: x-large;
   gap: .5em;
-  background: rgba(255, 255, 255, .1);
-  backdrop-filter: blur(3px);
+  /* background: rgba(0, 0, 0, .4); */
+  background: rgba(255, 255, 255, .15);
+  /* backdrop-filter: blur(3px); */
+  border-radius: 8px;
 }
 
-.nominado img {
+.nominado>img {
   object-fit: cover;
   height: 20vh;
   border-radius: 8px 8px 0 0;
@@ -101,8 +103,10 @@ img {
 }
 
 .preview img {
-  min-width: 600px;
-  max-height: 70%;
+  object-fit: contain;
+  width: 100%;
+  max-width: 600px;
+  max-height: 70vh;
 }
 
 .preview iframe {
