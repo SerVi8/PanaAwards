@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Consolas', Courier, monospace;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+section {
+    display: flex;
+    height: 100vh;
+    background-image: url('./assets/BG_PanaAwardas.png');
+    background-size: cover;
+
+}
+
+.title {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.title h1 {
+    margin: 0;
+    font-size: 7em;
+    font-weight: lighter;
+}
+
+.title h2,
+.present h2 {
+    margin: 0;
+    color: #07CB98;
+    font-size: 2em;
+}
+
+.present {
+    justify-content: space-between;
+}
+
+.present img {
+    height: 100%;
+}
+
+.present div {
+    margin: auto auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+.present p {
+    text-align: justify;
+    font-size: x-large;
+}
+
+.present h1 {
+    text-align: center;
+    font-size: 5em;
+}
